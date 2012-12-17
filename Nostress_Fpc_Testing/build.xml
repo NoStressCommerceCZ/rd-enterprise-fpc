@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+http://ant.apache.org
+
+ANT BUILD SCRIPT
+
+On Linux just install ant package trough your favorite package manager.
+
+On Windows you can use great instalator provided on URL
+  http://code.google.com/p/winant/downloads/list
+
+ -->
+<project name="Nostress_Fpctesting" default="build">
+
+  <property name="module_name" value="Nostress_Fpctesting" />
+  <!-- 
+    Set location where you wish to deploy module's code
+  -->
+	<property name="prop.deploy.dir" location="../deploy/" />
+
+	<target name="build">
+    	<antcall target="deploy" />
+		<antcall target="clear-cache" />
+  	</target>
+
+  <target name="usage">
+    <echo>
+      ant -f build.xml usage    -- it shows this help message
+      ant -f build.xml check    -- it shows set deploy directory
+      ant -f build.xml deploy -Dprop.deploy.dir=/any/path   -- it deploys module's code to deployment directory
+    </echo>
+  </target>
+  
+  <target name="check">
+    <echo>
+      Base dir:     ${basedir}
+        -- here we are
+      Deploy dir:   ${prop.deploy.dir}
+        -- there will be module deployed
+    </echo>
+  </target>
+  
+  <target name="deploy" description="deploy-Nostress_Fpctesting">
+    
+    <echo>Fpctesting</echo>
+    <copy todir="${prop.deploy.dir}" verbose="true">
+	  <fileset dir=".">
+	    <include name="**/*"/>
+	    <exclude name="build.xml"/>
+	  </fileset>
+	</copy>
+	
+  </target>
+  
+  <target name="clear-cache">
+
+    <delete failonerror="false">
+  		<fileset dir="${prop.deploy.dir}/var/cache"/>
+  		<fileset dir="${prop.deploy.dir}/var/full_page_cache"/>
+  	</delete>
+    
+  </target>
+  
+</project>

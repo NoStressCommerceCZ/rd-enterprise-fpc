@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!--
+/** 
+ * Magento Component developed by NoStress Commerce 
+ * 
+ * NOTICE OF LICENSE 
+ * 
+ * This source file is subject to the Open Software License (OSL 3.0) 
+ * that is bundled with this package in the file LICENSE.txt. 
+ * It is also available through the world-wide-web at this URL: 
+ * http://opensource.org/licenses/osl-3.0.php 
+ * If you did of the license and are unable to 
+ * obtain it through the world-wide-web, please send an email 
+ * to info@nostresscommerce.cz so we can send you a copy immediately. 
+ * 
+ * @copyright Copyright (c) 2012 NoStress Commerce
+ * 
+ */
+-->
+<config>
+	<modules>
+		<Nostress_Fpctesting>
+			<version>0.1.0</version>
+		</Nostress_Fpctesting>
+	</modules>
+	<frontend>
+		<routers>
+			<nostress_fpctesting>
+				<use>standard</use>
+				<args>
+					<module>Nostress_Fpctesting</module>
+					<frontName>nostress_fpctesting</frontName>
+				</args>
+			</nostress_fpctesting>
+		</routers>
+		<layout>
+            <updates>
+                <nostress_fpctesting>
+                    <file>nostress_fpctesting.xml</file>
+                </nostress_fpctesting>
+            </updates>
+        </layout>
+        <cache>
+            <requests>
+                <nostress_fpctesting>enterprise_pagecache/processor_default</nostress_fpctesting>
+        	</requests>
+		</cache>
+	</frontend>
+	<global>
+		<models>
+			<nostress_fpctesting>
+				<class>Nostress_Fpctesting_Model</class>
+				<resourceModel>nostress_fpctesting_mysql4</resourceModel>
+			</nostress_fpctesting>
+		</models>
+		<blocks>
+			<nostress_fpctesting>
+				<class>Nostress_Fpctesting_Block</class>
+			</nostress_fpctesting>
+		</blocks>
+		<helpers>
+			<nostress_fpctesting>
+				<class>Nostress_Fpctesting_Helper</class>
+			</nostress_fpctesting>
+		</helpers>
+	</global>
+</config>
